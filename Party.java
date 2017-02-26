@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 public class Party extends JFrame implements ActionListener, MouseListener{
     private Container pane;
     private String name;
-    public String outputCode;
+    public String outputCode = "";
 
     private JPanel panel1, panel2, panel3, panel4, panel5, panel6, panel7,panel8;
     private JButton button1, button2, button3;
@@ -25,6 +25,7 @@ public class Party extends JFrame implements ActionListener, MouseListener{
 
     private ImageIcon G1,G2,G3,G4,G5;
     private JLabel p1,p2,p3,p4,p5;
+    private JLabel finalOuput;
 
     private int numPeople;
     private int roomSize;
@@ -36,7 +37,7 @@ public class Party extends JFrame implements ActionListener, MouseListener{
     public void actionPerformed(ActionEvent e){
         if(e.getSource() == button1){
             //ask name
-            name = JOptionPane.showInputDialog("What is your name?");
+            this.name = JOptionPane.showInputDialog("What is your name?");
             panel2.setVisible(true);
             panel1.setVisible(false);
         }else if(e.getSource() == button2){
@@ -69,21 +70,21 @@ public class Party extends JFrame implements ActionListener, MouseListener{
             String food = JOptionPane.showInputDialog("Choose: Pizza, Cake, or Ice Cream");
             condInputs.append("Food at the party: " + food+ "\n");
             codeOutput2.append("userInput: " + food + "\n" +
-                                "if userInput == " + food + "\n" +
-                                "\n display picture of " + food);
+                                "if userInput == " + food +
+                                "\n display picture of " + food + "\n");
             this.outputCode += "userInput: " + food + "\n" +
                     "if userInput == " + food + "\n" +
-                    "display picture of " + food;
+                    "display picture of " + food + "\n";
             this.food = food;
         }else if(e.getSource() == chooseMusic){
             String music = JOptionPane.showInputDialog("Choose: Happy Birthday, Jingle Bells, Ice Cream");
             condInputs.append("Music at the party: " + music + "\n");
             codeOutput2.append("userInput: " + music + "\n" +
                     "if userInput == " + music + "\n" +
-                    "display picture of " + music);
+                    "play " + music);
             this.outputCode += "userInput: " + music + "\n" +
                     "if userInput == " + music +
-                    "display picture of " + music;
+                    "play " + music;
             this.music = music;
             panel5.setVisible(true);
             panel4.setVisible(false);
@@ -125,7 +126,10 @@ public class Party extends JFrame implements ActionListener, MouseListener{
     }
     public void mouseClicked(MouseEvent e) {
         panel7.setVisible(false);
+        finalOuput = new JLabel("Output code for " + this.name + "'s party");
+        panel8.add(finalOuput);
         panel8.setVisible(true);
+        panel8.add(codeOutput4);
         codeOutput4.append(outputCode);
     }
     public void mouseExited(MouseEvent e) {
@@ -264,10 +268,11 @@ public class Party extends JFrame implements ActionListener, MouseListener{
         panel8 = new JPanel();
         pane.add(panel8);
         panel8.setVisible(false);
-        codeOutput4 = new JTextArea(" ");
+
+        codeOutput4 = new JTextArea();
         codeOutput4.setColumns(70);
         codeOutput4.setRows(10);
-        panel8.add(codeOutput4);
+
 
 
 
