@@ -6,4 +6,5 @@ a dance party.
 # How to Run
 
 Compile Party.java
+
 Run Party
