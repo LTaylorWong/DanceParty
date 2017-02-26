@@ -1,8 +1,9 @@
-
+package Game;
+import java.io.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import PartyRoom;
+import Game.PartyRoom;
 import sun.audio.*;
 
 import java.awt.event.ActionListener;
@@ -17,7 +18,7 @@ public class Party extends JFrame implements ActionListener, MouseListener{
     public String outputCode = "";
 
     private JPanel panel1, panel2, panel3, panel4, panel5, panel6, panel7,panel8;
-    private JButton button1, button2, button3;
+    private JButton button1, button2, button3, finish;
     private JButton addPeeps, addSize, addBalloons;
     private JButton chooseFood, chooseMusic;
     private JButton inviteYes, inviteNo;
@@ -84,7 +85,7 @@ public class Party extends JFrame implements ActionListener, MouseListener{
                     "play " + music);
             this.outputCode += "userInput: " + music + "\n" +
                     "if userInput == " + music +
-                    "play " + music;
+                    "play " + music + "\n";
             this.music = music;
             panel5.setVisible(true);
             panel4.setVisible(false);
@@ -106,6 +107,20 @@ public class Party extends JFrame implements ActionListener, MouseListener{
         }else if(e.getSource() == button3){
             panel7.setVisible(true);
             panel6.setVisible(false);
+            //music
+            /*tried but didn't work
+            AudioPlayer AUD = AudioPlayer.player;
+            AudioStream AUDstream;
+            AudioData AUDdata;
+            ContinuousAudioDataStream loop = null;
+
+            try {
+                AUDstream = new AudioStream(new FileInputStream("shinee_key_mashup.wav"));
+                AUDdata = AUDstream.getData();
+                loop = new ContinuousAudioDataStream(AUDdata);
+            }catch(IOException error){}
+            AUD.start(loop);
+            */
             PartyRoom p = new PartyRoom(numPeople,roomSize,numBalloons,food,music,needInvitation);
             if(food.equals("Pizza")){
                 p1.setVisible(true);
@@ -121,29 +136,41 @@ public class Party extends JFrame implements ActionListener, MouseListener{
                 p4 = new JLabel(G4);
                 panel7.add(p4);
             }
+            finish.setVisible(true);
+        }else if(e.getSource() == finish){
+            panel7.setVisible(false);
+            finalOuput = new JLabel("Output code for " + this.name + "'s party");
+            panel8.add(finalOuput);
+            panel8.setVisible(true);
+            panel8.add(codeOutput4);
+            codeOutput4.append(outputCode);
         }
 
     }
     public void mouseClicked(MouseEvent e) {
-        panel7.setVisible(false);
-        finalOuput = new JLabel("Output code for " + this.name + "'s party");
-        panel8.add(finalOuput);
-        panel8.setVisible(true);
-        panel8.add(codeOutput4);
-        codeOutput4.append(outputCode);
+        p5.setVisible(false);
+        if(food.equals("Pizza")){
+            p1.setVisible(true);
+        }
+        else if(food.equals("Cake")){
+            p2.setVisible(true);
+        }
+        else{
+            p3.setVisible(true);
+        }
     }
     public void mouseExited(MouseEvent e) {
         //not used
     }
     public void mousePressed(MouseEvent e) {
-//not used
+        //not used
     }
 
     public void mouseReleased(MouseEvent e) {
-//not used
+        //not used
     }
     public void mouseEntered(MouseEvent e) {
-//not used
+        //not used
     }
 
     public Party(){
@@ -247,7 +274,7 @@ public class Party extends JFrame implements ActionListener, MouseListener{
         panel7 = new JPanel();
         G5 = new ImageIcon(getClass().getResource("ballons.png"));
         p5 = new JLabel(G5);
-        p5.addMouseListener(this);
+        panel7.addMouseListener(this);
         panel7.add(p5);
         panel7.setVisible(false);
         pane.add(panel7);
@@ -263,6 +290,10 @@ public class Party extends JFrame implements ActionListener, MouseListener{
         p3 = new JLabel(G3);
         panel7.add(p3);
         p3.setVisible(false);
+        finish = new JButton("Click to finish!");
+        panel7.add(finish);
+        finish.addActionListener(this);
+        finish.setVisible(false);
 
         //final code
         panel8 = new JPanel();
