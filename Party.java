@@ -4,8 +4,8 @@ import java.io.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import PartyRoom;
-import sun.audio.*;
+//import PartyRoom;
+//import sun.audio.*;
 
 import java.awt.event.ActionListener;
 
@@ -122,7 +122,7 @@ public class Party extends Applet implements ActionListener, MouseListener{
             }catch(IOException error){}
             AUD.start(loop);
             */
-            PartyRoom p = new PartyRoom(numPeople,roomSize,numBalloons,food,music,needInvitation);
+            //PartyRoom p = new PartyRoom(numPeople,roomSize,numBalloons,food,music,needInvitation);
             if(food.equals("Pizza")){
                 p1.setVisible(true);
             }
