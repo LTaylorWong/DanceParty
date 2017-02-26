@@ -174,7 +174,7 @@ public class Party extends JFrame implements ActionListener, MouseListener{
     }
 
     public Party(){
-        setTitle("Hello World of Coding");
+        setTitle("Dance Party");
         setLocation(0,0);
         setSize(950,660);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
