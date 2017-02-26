@@ -1,9 +1,9 @@
-package Game;
+
 import java.io.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import Game.PartyRoom;
+import PartyRoom;
 import sun.audio.*;
 
 import java.awt.event.ActionListener;
@@ -78,13 +78,13 @@ public class Party extends JFrame implements ActionListener, MouseListener{
                     "display picture of " + food + "\n";
             this.food = food;
         }else if(e.getSource() == chooseMusic){
-            String music = JOptionPane.showInputDialog("Choose: Happy Birthday, Jingle Bells, Ice Cream");
+            String music = JOptionPane.showInputDialog("Choose: Happy Birthday, Jingle Bells, Twinkle Twinkle Little Star");
             condInputs.append("Music at the party: " + music + "\n");
             codeOutput2.append("userInput: " + music + "\n" +
                     "if userInput == " + music + "\n" +
                     "play " + music);
             this.outputCode += "userInput: " + music + "\n" +
-                    "if userInput == " + music +
+                    "if userInput == " + music + "\n" +
                     "play " + music + "\n";
             this.music = music;
             panel5.setVisible(true);
@@ -189,6 +189,7 @@ public class Party extends JFrame implements ActionListener, MouseListener{
         button1 = new JButton("Party Maker!");
         button1.addActionListener(this);
         button1.setPreferredSize(new Dimension(950,660));
+        button1.setFont(new Font("Arial", Font.PLAIN, 50));
         panel1.add(button1, BorderLayout.CENTER);
 
 
@@ -198,6 +199,7 @@ public class Party extends JFrame implements ActionListener, MouseListener{
         button2 = new JButton("LETS GO MAKE YOUR PARTY");
         button2.addActionListener(this);
         button2.setPreferredSize(new Dimension(950,660));
+        button2.setFont(new Font("Arial", Font.PLAIN, 50));
         panel2.add(button2);
 
         //making teaching primatives
@@ -266,6 +268,7 @@ public class Party extends JFrame implements ActionListener, MouseListener{
         panel6.setVisible(false);
         pane.add(panel6);
         button3 = new JButton("GET THIS PARTY STARTED!!");
+        button3.setFont(new Font("Arial", Font.PLAIN, 50));
         panel6.add(button3);
         button3.addActionListener(this);
         button3.setPreferredSize(new Dimension(950,660));
