@@ -1,4 +1,5 @@
 
+import java.applet.Applet;
 import java.io.*;
 import javax.swing.*;
 import java.awt.*;
@@ -12,8 +13,8 @@ import java.awt.event.ActionListener;
 /**
  * Created by Lian Wong on 2/25/2017.
  */
-public class Party extends JFrame implements ActionListener, MouseListener{
-    private Container pane;
+public class Party extends Applet implements ActionListener, MouseListener{
+    //private Container pane;
     private String name;
     public String outputCode = "";
 
@@ -174,12 +175,15 @@ public class Party extends JFrame implements ActionListener, MouseListener{
     }
 
     public Party(){
-        setTitle("Hello World of Coding");
-        setLocation(0,0);
-        setSize(950,660);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        pane = getContentPane();
+        JFrame pane = new JFrame("Party");
+        pane.setTitle("Hello World of Coding");
+        pane.setLocation(0,0);
+        pane.setSize(940,660);
+        pane.setResizable(false);
+        pane.setVisible(true);
+        //pane.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        pane.getContentPane();
         pane.setLayout(new CardLayout(40, 30));
 
         //opening
@@ -309,9 +313,6 @@ public class Party extends JFrame implements ActionListener, MouseListener{
         codeOutput4 = new JTextArea();
         codeOutput4.setColumns(70);
         codeOutput4.setRows(10);
-
-
-
 
     }
 
