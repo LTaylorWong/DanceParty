@@ -1,8 +1,8 @@
-package Game;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import Game.PartyRoom;
+import PartyRoom;
 import sun.audio.*;
 
 import java.awt.event.ActionListener;
