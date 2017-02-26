@@ -24,8 +24,8 @@ public class Party extends JFrame implements ActionListener, MouseListener{
     private JButton inviteYes, inviteNo;
     private JTextArea intInputs, condInputs, boolInputs, codeOutput, codeOutput2, codeOutput3,codeOutput4;
 
-    private ImageIcon G1,G2,G3,G4,G5;
-    private JLabel p1,p2,p3,p4,p5;
+    private ImageIcon G1,G2,G3,G4,G5,L1;
+    private JLabel p1,p2,p3,p4,p5,l1;
     private JLabel finalOuput;
 
     private int numPeople;
@@ -36,7 +36,7 @@ public class Party extends JFrame implements ActionListener, MouseListener{
     private boolean needInvitation;
 
     public void actionPerformed(ActionEvent e){
-        if(e.getSource() == button1){
+        if((e.getSource() == button1) || e.getSource() == l1){
             //ask name
             this.name = JOptionPane.showInputDialog("What is your name?");
             panel2.setVisible(true);
@@ -73,7 +73,7 @@ public class Party extends JFrame implements ActionListener, MouseListener{
             codeOutput2.append("userInput: " + food + "\n" +
                                 "if userInput == " + food +
                                 "\n display picture of " + food + "\n");
-            this.outputCode += "userInput: " + food + "\n" +
+            this.outputCode += "\n userInput: " + food + "\n" +
                     "if userInput == " + food + "\n" +
                     "display picture of " + food + "\n";
             this.food = food;
@@ -83,7 +83,7 @@ public class Party extends JFrame implements ActionListener, MouseListener{
             codeOutput2.append("userInput: " + music + "\n" +
                     "if userInput == " + music + "\n" +
                     "play " + music);
-            this.outputCode += "userInput: " + music + "\n" +
+            this.outputCode += "\n userInput: " + music + "\n" +
                     "if userInput == " + music + "\n" +
                     "play " + music + "\n";
             this.music = music;
@@ -93,14 +93,14 @@ public class Party extends JFrame implements ActionListener, MouseListener{
         }else if(e.getSource() == inviteYes){
             boolInputs.append("Guests need an invitation to the party");
             codeOutput3.append("boolean needInvitation = " + true + "\n");
-            outputCode += "boolean needInvitation = " + true + "\n";
+            outputCode += "\n boolean needInvitation = " + true + "\n";
             this.needInvitation = true;
             panel6.setVisible(true);
             panel5.setVisible(false);
         }else if(e.getSource() == inviteNo){
             boolInputs.append("Guests do not need an invitation to the party");
             codeOutput3.append("boolean needInvitation = " + false + "\n");
-            outputCode += "boolean needInvitation = " + false + "\n";
+            outputCode += "\n boolean needInvitation = " + false + "\n";
             this.needInvitation = false;
             panel6.setVisible(true);
             panel5.setVisible(false);
@@ -174,7 +174,7 @@ public class Party extends JFrame implements ActionListener, MouseListener{
     }
 
     public Party(){
-        setTitle("Dance Party");
+        setTitle("Hello World of Coding");
         setLocation(0,0);
         setSize(950,660);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -186,9 +186,12 @@ public class Party extends JFrame implements ActionListener, MouseListener{
         panel1 = new JPanel();
         pane.add(panel1);
         panel1.setVisible(true);
-        button1 = new JButton("Party Maker!");
+        L1 = new ImageIcon(getClass().getResource("logo.png"));
+        l1 = new JLabel(L1);
+        panel1.add(l1);
+        button1 = new JButton("Dance Party!");
         button1.addActionListener(this);
-        button1.setPreferredSize(new Dimension(950,660));
+        button1.setPreferredSize(new Dimension(950,330));
         button1.setFont(new Font("Arial", Font.PLAIN, 50));
         panel1.add(button1, BorderLayout.CENTER);
 
